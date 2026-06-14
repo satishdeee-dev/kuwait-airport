@@ -12,6 +12,7 @@ const ITEMS: Item[] = [
   { key: "passenger", href: "/passenger" },
   { key: "services", href: "/services" },
   { key: "transport", href: "/transport" },
+  { key: "carRental", href: "/car-rental" },
   { key: "parking", href: "/parking" },
   { key: "dining", href: "/dining" },
   { key: "lostFound", href: "/lost-found" },

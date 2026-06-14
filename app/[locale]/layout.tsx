@@ -21,8 +21,8 @@ export default async function LocaleLayout({
   const isRTL = locale === "ar";
 
   return (
-    <html lang={locale} dir={isRTL ? "rtl" : "ltr"}>
-      <body className="min-h-screen flex flex-col kia-page-bg">
+    <html lang={locale} dir={isRTL ? "rtl" : "ltr"} className="dark">
+      <body className="min-h-screen flex flex-col kia-page-bg text-slate-100">
         <NextIntlClientProvider messages={messages}>
           <Navbar locale={locale} />
           <main className="flex-1 relative z-10">{children}</main>

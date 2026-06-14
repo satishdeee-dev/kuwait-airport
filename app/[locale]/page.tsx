@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Clock, ArrowRight, Radar } from "lucide-react";
+import { MapPin, Phone, Clock, ArrowRight, Car, SquareParking } from "lucide-react";
 import FlightWidget from "@/components/airport/FlightWidget";
 import QuickLinksCarousel from "@/components/airport/QuickLinksCarousel";
 import PrayerTimesWidget from "@/components/airport/PrayerTimesWidget";
@@ -12,7 +12,7 @@ function HomeContent({ locale }: { locale: string }) {
   const experiences = [
     { key: "dining", href: "/dining", title: "Dining & Shopping", desc: "Restaurants, cafés and duty-free", emoji: "🛍️", grad: "from-amber-500 to-orange-600" },
     { key: "vip", href: "/vip", title: "VIP & Lounges", desc: "Premium services and relaxation", emoji: "⭐", grad: "from-purple-500 to-indigo-600" },
-    { key: "transport", href: "/transport", title: "Getting Around", desc: "Taxi, bus, car rental & parking", emoji: "🚕", grad: "from-emerald-500 to-teal-600" },
+    { key: "transport", href: "/transport", title: "Getting Around", desc: "Taxi, bus and transfers", emoji: "🚕", grad: "from-emerald-500 to-teal-600" },
     { key: "guidance", href: "/guidance", title: "Terminal Guide", desc: "Maps and wayfinding", emoji: "🗺️", grad: "from-sky-500 to-blue-600" },
   ] as const;
 
@@ -49,31 +49,41 @@ function HomeContent({ locale }: { locale: string }) {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201440%2048%22%20preserveAspectRatio=%22none%22%3E%3Cpath%20fill=%22%23f4f8fc%22%20d=%22M0,48L1440,48L1440,12C1080,40%20360,40%200,12Z%22/%3E%3C/svg%3E')] bg-cover z-10" />
       </section>
 
-      {/* Live tracking banner */}
-      <section className="max-w-7xl mx-auto px-4 -mt-4 relative z-20">
+      {/* Booking banners: Car Rental + Parking */}
+      <section className="max-w-7xl mx-auto px-4 -mt-6 relative z-20 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Link
-          href={`/${locale}/live`}
+          href={`/${locale}/car-rental`}
           className="kia-glass kia-floaty flex items-center gap-4 rounded-2xl p-5 group"
         >
-          <span className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-red-500 text-white shrink-0">
-            <span className="absolute inset-0 rounded-2xl bg-red-500 kia-pulse-ring" />
-            <Radar className="w-6 h-6 relative" />
+          <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 text-white shrink-0">
+            <Car className="w-6 h-6" />
           </span>
           <div className="flex-1">
-            <p className="font-bold text-[#002b5c] flex items-center gap-2">
-              Live Flight Radar
-              <span className="w-2 h-2 rounded-full bg-red-500 kia-blip" />
-            </p>
-            <p className="text-sm text-gray-600">Track aircraft over Kuwait airspace in real time</p>
+            <p className="font-bold text-white">Rent a Car</p>
+            <p className="text-sm text-slate-300">Browse models &amp; book online</p>
           </div>
-          <ArrowRight className="w-5 h-5 text-[#0057a8] group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-5 h-5 text-sky-400 group-hover:translate-x-1 transition-transform rtl:rotate-180" />
+        </Link>
+
+        <Link
+          href={`/${locale}/parking`}
+          className="kia-glass kia-floaty flex items-center gap-4 rounded-2xl p-5 group"
+        >
+          <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shrink-0">
+            <SquareParking className="w-6 h-6" />
+          </span>
+          <div className="flex-1">
+            <p className="font-bold text-white">Reserve Parking</p>
+            <p className="text-sm text-slate-300">Pick a slot on the live map</p>
+          </div>
+          <ArrowRight className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform rtl:rotate-180" />
         </Link>
       </section>
 
       {/* Quick links — rolling photo carousel */}
       <section className="max-w-7xl mx-auto px-4 py-14">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-[#002b5c] mb-2">{t("quickLinks")}</h2>
+          <h2 className="text-3xl font-bold text-white mb-2">{t("quickLinks")}</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#0057a8] to-[#2e9bd6] rounded-full mx-auto" />
         </div>
         <QuickLinksCarousel locale={locale} />
@@ -82,7 +92,7 @@ function HomeContent({ locale }: { locale: string }) {
       {/* Experiences grid (Dubai-style) with prayer times on the side */}
       <section className="max-w-7xl mx-auto px-4 pb-14">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-[#002b5c] mb-2">Explore the Airport</h2>
+          <h2 className="text-3xl font-bold text-white mb-2">Explore the Airport</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#0057a8] to-[#2e9bd6] rounded-full mx-auto" />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
@@ -123,8 +133,8 @@ function HomeContent({ locale }: { locale: string }) {
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0057a8] to-[#2e9bd6] flex items-center justify-center text-white shadow-md">
                 <Icon className="w-6 h-6" />
               </div>
-              <p className="font-bold text-[#002b5c]">{label}</p>
-              <p className="text-gray-600">{value}</p>
+              <p className="font-bold text-white">{label}</p>
+              <p className="text-slate-300">{value}</p>
             </div>
           ))}
         </div>

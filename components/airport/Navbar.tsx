@@ -2,94 +2,93 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { Menu, X, Globe } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Globe, Sun } from "lucide-react";
 
-const navLinks = [
-  { key: "live", href: "/live" },
-  { key: "flights", href: "/flights" },
-  { key: "passenger", href: "/passenger" },
-  { key: "services", href: "/services" },
-  { key: "transport", href: "/transport" },
-  { key: "parking", href: "/parking" },
-  { key: "dining", href: "/dining" },
-  { key: "lostFound", href: "/lost-found" },
-  { key: "prayer", href: "/prayer" },
-  { key: "weather", href: "/weather" },
-  { key: "visa", href: "/visa" },
-  { key: "complaints", href: "/complaints" },
-  { key: "media", href: "/media" },
-  { key: "vip", href: "/vip" },
-] as const;
+function useNow() {
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => {
+    const tick = () => setNow(new Date());
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return now;
+}
 
 export default function Navbar({ locale }: { locale: string }) {
-  const t = useTranslations("nav");
-  const [open, setOpen] = useState(false);
+  const now = useNow();
   const otherLocale = locale === "en" ? "ar" : "en";
+  const isRTL = locale === "ar";
+
+  const timeStr = now
+    ? now.toLocaleTimeString(isRTL ? "ar-KW" : "en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+        timeZone: "Asia/Kuwait",
+      })
+    : "--:--:--";
+
+  const dateStr = now
+    ? now.toLocaleDateString(isRTL ? "ar-KW" : "en-GB", {
+        weekday: "short",
+        day: "numeric",
+        month: "short",
+        timeZone: "Asia/Kuwait",
+      })
+    : "";
 
   return (
-    <header className="bg-gradient-to-r from-[#002b5c] via-[#0057a8] to-[#002b5c] text-white shadow-xl sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-opacity-95">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link href={`/${locale}`} className="flex items-center group">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050a14]/80 backdrop-blur supports-[backdrop-filter]:bg-[#050a14]/70 text-white">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between gap-2 h-14 sm:h-16">
+          <Link href={`/${locale}`} className="flex items-center group shrink-0">
             <Image
               src="/brand/logo-white.png"
               alt="Kuwait International Airport"
               width={200}
               height={50}
               priority
-              className="h-9 w-auto group-hover:scale-105 transition-transform"
+              className="h-7 sm:h-9 w-auto group-hover:scale-105 transition-transform"
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1 text-sm">
-            {navLinks.slice(0, 6).map((link) => (
-              <Link
-                key={link.key}
-                href={`/${locale}${link.href}`}
-                className="px-3 py-2 rounded hover:bg-white/10 transition-colors whitespace-nowrap"
-              >
-                {t(link.key)}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex items-center gap-2 sm:gap-4">
+            {/* Live clock */}
+            <div className="text-right leading-tight">
+              <p className="font-mono text-sm sm:text-lg font-bold tabular-nums tracking-tight">
+                {timeStr}
+              </p>
+              <p className="hidden sm:block text-[10px] sm:text-xs text-white/60">
+                {dateStr} · Kuwait
+              </p>
+            </div>
 
-          <div className="flex items-center gap-2">
+            {/* Weather */}
+            <Link
+              href={`/${locale}/weather`}
+              className="flex items-center gap-1.5 rounded-xl bg-white/10 hover:bg-white/15 ring-1 ring-white/15 px-2.5 py-1.5 transition-colors"
+            >
+              <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
+              <span className="font-semibold text-sm sm:text-base">44°</span>
+              <span className="hidden md:inline text-xs text-white/60">Sunny</span>
+            </Link>
+
+            {/* Language toggle */}
             <Link
               href={`/${otherLocale}`}
-              className="flex items-center gap-1 px-3 py-1.5 rounded border border-white/30 hover:bg-white/10 text-sm transition-colors"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-white/20 hover:bg-white/10 text-sm transition-colors"
             >
               <Globe className="w-4 h-4" />
-              {otherLocale === "ar" ? "العربية" : "English"}
+              <span className="hidden sm:inline">
+                {otherLocale === "ar" ? "العربية" : "EN"}
+              </span>
             </Link>
-            <button
-              className="lg:hidden p-2 rounded hover:bg-white/10"
-              onClick={() => setOpen(!open)}
-              aria-label="Toggle menu"
-            >
-              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
         </div>
       </div>
-
-      {open && (
-        <div className="lg:hidden border-t border-white/20 bg-[#003366]">
-          <nav className="max-w-7xl mx-auto px-4 py-2 grid grid-cols-2 gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.key}
-                href={`/${locale}${link.href}`}
-                className="px-3 py-2 rounded hover:bg-white/10 text-sm transition-colors"
-                onClick={() => setOpen(false)}
-              >
-                {t(link.key)}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
     </header>
   );
 }

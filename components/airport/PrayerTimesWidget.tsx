@@ -58,8 +58,8 @@ export default function PrayerTimesWidget({ locale }: { locale: string }) {
           <MoonStar className="w-6 h-6" />
         </span>
         <div>
-          <h3 className="font-bold text-[#002b5c] leading-tight">{n("prayer")}</h3>
-          <p className="text-xs text-gray-500">Kuwait City · Today</p>
+          <h3 className="font-bold text-white leading-tight">{n("prayer")}</h3>
+          <p className="text-xs text-slate-400">Kuwait City · Today</p>
         </div>
       </div>
 
@@ -70,18 +70,18 @@ export default function PrayerTimesWidget({ locale }: { locale: string }) {
             <li
               key={p.name}
               className={`flex items-center justify-between rounded-xl px-3 py-2 transition-colors ${
-                active ? "bg-emerald-500 text-white shadow-sm" : "text-gray-700"
+                active ? "bg-emerald-500 text-white shadow-sm" : "text-slate-200"
               }`}
             >
               <span className="flex items-center gap-2">
-                <span className={`text-sm font-semibold ${active ? "" : "text-[#002b5c]"}`}>
+                <span className={`text-sm font-semibold ${active ? "" : "text-white"}`}>
                   {isRTL ? p.arabic : p.name}
                 </span>
-                <span className={`text-xs ${active ? "text-white/80" : "text-gray-400"}`}>
+                <span className={`text-xs ${active ? "text-white/80" : "text-slate-400"}`}>
                   {isRTL ? p.name : p.arabic}
                 </span>
               </span>
-              <span className={`font-mono text-sm font-bold ${active ? "" : "text-[#0057a8]"}`}>
+              <span className={`font-mono text-sm font-bold ${active ? "" : "text-sky-400"}`}>
                 {format12h(p.time)}
               </span>
             </li>
@@ -91,7 +91,7 @@ export default function PrayerTimesWidget({ locale }: { locale: string }) {
 
       <Link
         href={`/${locale}/prayer`}
-        className="mt-4 inline-flex items-center justify-center gap-1 text-sm font-semibold text-[#0057a8] hover:gap-2 transition-all"
+        className="mt-4 inline-flex items-center justify-center gap-1 text-sm font-semibold text-sky-400 hover:gap-2 transition-all"
       >
         Prayer rooms & details <ArrowRight className="w-4 h-4" />
       </Link>
