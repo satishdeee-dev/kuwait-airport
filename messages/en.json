@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "flights": "Flight Movement",
+    "passenger": "Passenger Info",
+    "services": "Centers & Services",
+    "transport": "To & From Airport",
+    "parking": "Car Rental & Parking",
+    "dining": "Restaurants & Shopping",
+    "guidance": "Guidance",
+    "lostFound": "Lost & Found",
+    "prayer": "Prayer Times",
+    "weather": "Weather",
+    "visa": "Travel Visas",
+    "complaints": "Suggestions & Complaints",
+    "links": "Links",
+    "media": "Media Center",
+    "vip": "VIP Flights",
+    "home": "Home"
+  },
+  "home": {
+    "title": "Kuwait International Airport",
+    "subtitle": "Your Gateway to the World",
+    "searchPlaceholder": "Search flights, airlines, destinations...",
+    "searchButton": "Search",
+    "quickLinks": "Quick Links",
+    "arrivals": "Arrivals",
+    "departures": "Departures",
+    "transit": "Transit"
+  },
+  "flights": {
+    "title": "Flight Movement",
+    "arrivals": "Arrivals",
+    "departures": "Departures",
+    "transit": "Transit",
+    "flightNo": "Flight No.",
+    "airline": "Airline",
+    "origin": "Origin",
+    "destination": "Destination",
+    "scheduled": "Scheduled",
+    "status": "Status",
+    "terminal": "Terminal",
+    "gate": "Gate",
+    "landed": "Landed",
+    "departed": "Departed",
+    "delayed": "Delayed",
+    "onTime": "On Time",
+    "boarding": "Boarding",
+    "cancelled": "Cancelled"
+  },
+  "complaints": {
+    "title": "Suggestions & Complaints",
+    "subtitle": "We value your feedback",
+    "name": "Full Name",
+    "email": "Email Address",
+    "type": "Type",
+    "suggestion": "Suggestion",
+    "complaint": "Complaint",
+    "message": "Message",
+    "submit": "Submit",
+    "success": "Thank you! Your message has been received.",
+    "selectType": "Select type"
+  },
+  "lostFound": {
+    "title": "Lost & Found",
+    "subtitle": "Report lost or found items at Kuwait International Airport",
+    "report": "Report an Item",
+    "itemType": "Item Type",
+    "description": "Description",
+    "location": "Last Known Location",
+    "contact": "Contact Details",
+    "submit": "Submit Report"
+  },
+  "vip": {
+    "title": "VIP Flights",
+    "subtitle": "Exclusive services for VIP passengers",
+    "lounge": "VIP Lounge",
+    "concierge": "Concierge Services",
+    "fastTrack": "Fast Track Immigration",
+    "privateTerminal": "Private Terminal"
+  },
+  "media": {
+    "title": "Media Center",
+    "news": "Latest News",
+    "pressReleases": "Press Releases",
+    "gallery": "Gallery",
+    "videos": "Videos"
+  }
+}
