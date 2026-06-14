@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import PageHero from "@/components/airport/PageHero";
 
 export default function LostFoundPage() {
   const t = useTranslations("lostFound");
@@ -13,10 +14,9 @@ export default function LostFoundPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">{t("title")}</h1>
-      <p className="text-gray-500 mb-8">{t("subtitle")}</p>
-
+    <>
+      <PageHero image="/brand/ql/lostFound.jpg" title={t("title")} subtitle={t("subtitle")} />
+      <div className="max-w-2xl mx-auto px-4 py-10">
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-8 text-sm text-blue-800">
         <strong>Lost & Found Office:</strong> Located at Arrivals Hall, Terminal 4 — Ground Floor<br />
         <strong>Phone:</strong> +965 2434 5600 | <strong>Hours:</strong> 8:00 AM – 10:00 PM
@@ -63,6 +63,7 @@ export default function LostFoundPage() {
           </button>
         </form>
       )}
-    </div>
+      </div>
+    </>
   );
 }

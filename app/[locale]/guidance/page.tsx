@@ -10,12 +10,13 @@ const terminals = [
   },
 ];
 
+import PageHero from "@/components/airport/PageHero";
+
 export default function GuidancePage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">Airport Guidance</h1>
-      <p className="text-gray-500 mb-8">Terminal maps and navigation guide</p>
-
+    <>
+      <PageHero image="/brand/ql/guidance.jpg" title="Airport Guidance" subtitle="Terminal maps and navigation guide" />
+      <div className="max-w-5xl mx-auto px-4 py-10">
       {terminals.map((t) => (
         <div key={t.name} className="mb-8">
           <h2 className="text-xl font-bold text-gray-700 mb-4">{t.name}</h2>
@@ -40,6 +41,7 @@ export default function GuidancePage() {
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-800">
         <strong>Interactive Map:</strong> A full interactive terminal map with real-time wayfinding will be integrated with the DGCA system. For assistance, visit the Information Desk at the Arrivals Hall.
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PageHero from "@/components/airport/PageHero";
 
 const mockArrivals = [
   { flightNo: "KU101", airline: "Kuwait Airways", origin: "London", scheduled: "08:30", status: "landed", terminal: "T4", gate: "A12" },
@@ -43,9 +44,9 @@ export default function FlightsPage() {
     search ? list.filter((f) => f.flightNo.toLowerCase().includes(search.toLowerCase()) || f.airline.toLowerCase().includes(search.toLowerCase())) : list;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">{t("title")}</h1>
-
+    <>
+      <PageHero image="/brand/ql/flights.jpg" title={t("title")} subtitle="Live arrivals, departures and transit information" />
+      <div className="max-w-7xl mx-auto px-4 py-8">
       <input
         type="text"
         placeholder="Search flight number or airline..."
@@ -73,7 +74,8 @@ export default function FlightsPage() {
       </Tabs>
 
       <p className="text-xs text-gray-400 mt-6">* Live flight data integration with DGCA systems pending API access.</p>
-    </div>
+      </div>
+    </>
   );
 }
 

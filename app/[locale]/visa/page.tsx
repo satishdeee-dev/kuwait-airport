@@ -5,12 +5,13 @@ const visaTypes = [
   { type: "Transit Visa", desc: "For passengers transiting through Kuwait for up to 72 hours.", fee: "KD 1", requirements: ["Onward ticket", "Destination visa (if required)"] },
 ];
 
+import PageHero from "@/components/airport/PageHero";
+
 export default function VisaPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">Travel Visa Services</h1>
-      <p className="text-gray-500 mb-8">Information on entry requirements and visa options for Kuwait</p>
-
+    <>
+      <PageHero image="/brand/ql/visa.jpg" title="Travel Visa Services" subtitle="Information on entry requirements and visa options for Kuwait" />
+      <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="space-y-4 mb-8">
         {visaTypes.map((v) => (
           <div key={v.type} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
@@ -33,6 +34,7 @@ export default function VisaPage() {
       <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
         <strong>Note:</strong> Visa requirements change frequently. Always verify with the <a href="https://www.moi.gov.kw" target="_blank" rel="noopener noreferrer" className="underline">Kuwait Ministry of Interior</a> or your nearest Kuwait embassy before travel.
       </div>
-    </div>
+      </div>
+    </>
   );
 }

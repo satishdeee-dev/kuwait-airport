@@ -7,11 +7,13 @@ const options = [
   { name: "Metro / Rail", icon: "🚇", desc: "Future Kuwait Metro will connect directly to the airport. Currently under construction.", tip: "Expected completion: 2027." },
 ];
 
+import PageHero from "@/components/airport/PageHero";
+
 export default function TransportPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">To & From the Airport</h1>
-      <p className="text-gray-500 mb-8">Getting to and from Kuwait International Airport</p>
+    <>
+      <PageHero image="/brand/ql/transport.jpg" title="To & From the Airport" subtitle="Getting to and from Kuwait International Airport" />
+      <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="space-y-4">
         {options.map((o) => (
           <div key={o.name} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex gap-5">
@@ -24,6 +26,7 @@ export default function TransportPage() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import PageHero from "@/components/airport/PageHero";
 
 const schema = z.object({
   name: z.string().min(2),
@@ -39,10 +40,9 @@ export default function ComplaintsPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">{t("title")}</h1>
-      <p className="text-gray-500 mb-8">{t("subtitle")}</p>
-
+    <>
+      <PageHero image="/brand/ql/complaints.jpg" title={t("title")} subtitle={t("subtitle")} />
+      <div className="max-w-2xl mx-auto px-4 py-12">
       {submitted && (
         <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
           {t("success")}
@@ -92,6 +92,7 @@ export default function ComplaintsPage() {
           {isSubmitting ? "Submitting..." : t("submit")}
         </button>
       </form>
-    </div>
+      </div>
+    </>
   );
 }

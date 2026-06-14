@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import PageHero from "@/components/airport/PageHero";
 
 const services = [
   { icon: "⭐", title: "VIP Lounge", desc: "Exclusive lounge with premium dining, business facilities, and relaxation areas. Level 3, Terminal 4." },
@@ -21,15 +22,14 @@ export default function VIPPage() {
   const t = useTranslations("vip");
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
-      <div className="mb-10 bg-gradient-to-br from-[#003366] to-[#006699] text-white rounded-2xl p-8">
-        <h1 className="text-3xl font-bold mb-2">{t("title")}</h1>
-        <p className="text-white/80">{t("subtitle")}</p>
-        <div className="mt-4">
-          <a href="tel:+96524345700" className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors">
-            📞 Book VIP Services: +965 2434 5700
-          </a>
-        </div>
+    <>
+      <PageHero image="/brand/ql/vip.jpg" title={t("title")} subtitle={t("subtitle")} />
+      <div className="max-w-5xl mx-auto px-4 py-10">
+      <div className="mb-10 bg-gradient-to-br from-[#003366] to-[#006699] text-white rounded-2xl p-6 flex items-center justify-between gap-4 flex-wrap">
+        <p className="font-semibold text-lg">Reserve premium VIP & royal flight services</p>
+        <a href="tel:+96524345700" className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors">
+          📞 Book VIP Services: +965 2434 5700
+        </a>
       </div>
 
       <section className="mb-10">
@@ -76,6 +76,7 @@ export default function VIPPage() {
           </table>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import PageHero from "@/components/airport/PageHero";
 
 const news = [
   { title: "Kuwait Airport Exceeds 10 Million Passenger Milestone in 2024", date: "2024-12-15", category: "News" },
@@ -13,9 +14,9 @@ export default function MediaPage() {
   const t = useTranslations("media");
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">{t("title")}</h1>
-
+    <>
+      <PageHero image="/brand/ql/media.jpg" title={t("title")} subtitle="News, press releases, photos and videos" />
+      <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <section className="md:col-span-2">
           <h2 className="text-xl font-bold text-gray-700 mb-4">{t("news")}</h2>
@@ -60,6 +61,7 @@ export default function MediaPage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

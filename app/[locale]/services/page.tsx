@@ -13,10 +13,13 @@ const services = [
   { name: "Wi-Fi", icon: "📶", location: "All areas", hours: "24/7 – Free" },
 ];
 
+import PageHero from "@/components/airport/PageHero";
+
 export default function ServicesPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Centers & Services</h1>
+    <>
+      <PageHero image="/brand/ql/services.jpg" title="Centers & Services" subtitle="Facilities and assistance throughout the airport" />
+      <div className="max-w-7xl mx-auto px-4 py-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {services.map((s) => (
           <div key={s.name} className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex gap-4 items-start hover:shadow-md transition-shadow">
@@ -29,6 +32,7 @@ export default function ServicesPage() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

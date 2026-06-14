@@ -1,3 +1,5 @@
+import PageHero from "@/components/airport/PageHero";
+
 export default function WeatherPage() {
   const forecast = [
     { day: "Today", icon: "☀️", high: 44, low: 32, condition: "Sunny", humidity: 18, wind: "NW 15 km/h" },
@@ -8,10 +10,9 @@ export default function WeatherPage() {
   ];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">Weather Conditions</h1>
-      <p className="text-gray-500 mb-8">Kuwait International Airport — Current & Forecast</p>
-
+    <>
+      <PageHero image="/brand/ql/weather.jpg" title="Weather Conditions" subtitle="Kuwait International Airport — Current & Forecast" />
+      <div className="max-w-3xl mx-auto px-4 py-10">
       <div className="bg-gradient-to-br from-[#003366] to-[#0066cc] text-white rounded-2xl p-8 mb-8 text-center">
         <p className="text-6xl mb-2">☀️</p>
         <p className="text-7xl font-bold">44°C</p>
@@ -37,6 +38,7 @@ export default function WeatherPage() {
       </div>
 
       <p className="text-xs text-gray-400 mt-4">* Weather data is indicative. For live data, integration with Kuwait Meteorological Department API required.</p>
-    </div>
+      </div>
+    </>
   );
 }

@@ -13,11 +13,13 @@ const rentalCompanies = [
   { name: "Sixt", phone: "+965 2247 5555", location: "Arrivals Hall" },
 ];
 
+import PageHero from "@/components/airport/PageHero";
+
 export default function ParkingPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Car Rental & Parking Services</h1>
-
+    <>
+      <PageHero image="/brand/ql/parking.jpg" title="Car Rental & Parking Services" subtitle="Parking zones, rates and rental companies" />
+      <div className="max-w-4xl mx-auto px-4 py-10">
       <section className="mb-10">
         <h2 className="text-xl font-bold text-gray-700 mb-4">Parking Zones</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -60,6 +62,7 @@ export default function ParkingPage() {
           </table>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

@@ -19,10 +19,13 @@ const typeColors: Record<string, string> = {
   Lounge: "bg-blue-100 text-blue-700",
 };
 
+import PageHero from "@/components/airport/PageHero";
+
 export default function DiningPage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Restaurants, Shopping & Relaxation</h1>
+    <>
+      <PageHero image="/brand/ql/dining.jpg" title="Restaurants, Shopping & Relaxation" subtitle="Dining, duty-free and lounges across the terminal" />
+      <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {venues.map((v) => (
           <div key={v.name} className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
@@ -38,6 +41,7 @@ export default function DiningPage() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

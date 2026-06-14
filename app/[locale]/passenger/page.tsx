@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import PageHero from "@/components/airport/PageHero";
 
 const sections = [
   {
@@ -20,8 +20,9 @@ const sections = [
 
 export default function PassengerPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Passenger Information</h1>
+    <>
+      <PageHero image="/brand/ql/passenger.jpg" title="Passenger Information" subtitle="Everything you need for arrival, departure and transit" />
+      <div className="max-w-7xl mx-auto px-4 py-10">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {sections.map((s) => (
           <div key={s.title} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -38,6 +39,7 @@ export default function PassengerPage() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
