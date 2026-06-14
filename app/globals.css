@@ -201,3 +201,30 @@
   transform: translateY(-4px);
   box-shadow: 0 18px 40px rgba(0, 43, 92, 0.14);
 }
+
+@keyframes kia-kenburns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1.5%, -1.5%); }
+}
+.kia-kenburns { animation: kia-kenburns 18s ease-out infinite alternate; }
+
+/* Floating cards that lift on scroll-in */
+.kia-floaty {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.kia-floaty:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 24px 50px rgba(0, 43, 92, 0.18);
+}
+
+@keyframes kia-pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.kia-pulse-ring { animation: kia-pulse-ring 2s ease-out infinite; }
+
+@keyframes kia-blip {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.kia-blip { animation: kia-blip 1.5s ease-in-out infinite; }

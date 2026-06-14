@@ -1,10 +1,18 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="bg-[#003366] text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
           <div>
-            <h3 className="font-bold text-base mb-3">Kuwait International Airport</h3>
+            <Image
+              src="/brand/logo-white.png"
+              alt="Kuwait International Airport"
+              width={220}
+              height={55}
+              className="h-10 w-auto mb-3"
+            />
             <p className="text-white/70">
               General Authority of Civil Aviation<br />
               Kuwait City, Kuwait

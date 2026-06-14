@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { Menu, X, Globe, Plane } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 
 const navLinks = [
+  { key: "live", href: "/live" },
   { key: "flights", href: "/flights" },
   { key: "passenger", href: "/passenger" },
   { key: "services", href: "/services" },
@@ -30,12 +32,15 @@ export default function Navbar({ locale }: { locale: string }) {
     <header className="bg-gradient-to-r from-[#002b5c] via-[#0057a8] to-[#002b5c] text-white shadow-xl sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-opacity-95">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href={`/${locale}`} className="flex items-center gap-2.5 font-bold text-lg group">
-            <span className="w-9 h-9 rounded-xl bg-white/15 ring-1 ring-white/30 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Plane className="w-5 h-5" />
-            </span>
-            <span className="hidden sm:inline tracking-tight">Kuwait International Airport</span>
-            <span className="sm:hidden">KIA</span>
+          <Link href={`/${locale}`} className="flex items-center group">
+            <Image
+              src="/brand/logo-white.png"
+              alt="Kuwait International Airport"
+              width={200}
+              height={50}
+              priority
+              className="h-9 w-auto group-hover:scale-105 transition-transform"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1 text-sm">

@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { Plane, Search, Clock, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone, Clock, ArrowRight, Radar } from "lucide-react";
+import FlightWidget from "@/components/airport/FlightWidget";
 
 function HomeContent({ locale }: { locale: string }) {
   const t = useTranslations("home");
@@ -23,71 +25,68 @@ function HomeContent({ locale }: { locale: string }) {
     { key: "guidance", href: "/guidance", icon: "🗺️", color: "bg-cyan-600" },
   ] as const;
 
+  const experiences = [
+    { key: "dining", href: "/dining", title: "Dining & Shopping", desc: "Restaurants, cafés and duty-free", emoji: "🛍️", grad: "from-amber-500 to-orange-600" },
+    { key: "vip", href: "/vip", title: "VIP & Lounges", desc: "Premium services and relaxation", emoji: "⭐", grad: "from-purple-500 to-indigo-600" },
+    { key: "transport", href: "/transport", title: "Getting Around", desc: "Taxi, bus, car rental & parking", emoji: "🚕", grad: "from-emerald-500 to-teal-600" },
+    { key: "guidance", href: "/guidance", title: "Terminal Guide", desc: "Maps and wayfinding", emoji: "🗺️", grad: "from-sky-500 to-blue-600" },
+  ] as const;
+
   return (
     <div>
-      {/* Hero */}
-      <section className="kia-hero kia-dots relative text-white px-4 pt-20 pb-28 overflow-hidden">
-        {/* Floating planes */}
-        <Plane className="absolute top-16 left-[8%] w-8 h-8 text-white/20 kia-fly" />
-        <Plane className="absolute top-28 left-[40%] w-6 h-6 text-white/15 kia-fly" style={{ animationDelay: "2s" }} />
-        <Plane className="absolute top-20 left-[70%] w-10 h-10 text-white/10 kia-fly" style={{ animationDelay: "4s" }} />
+      {/* Hero with real airport photo */}
+      <section className="relative h-[88vh] min-h-[560px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/brand/hero1.jpg"
+            alt="Kuwait International Airport Terminal"
+            fill
+            priority
+            className="object-cover kia-kenburns"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#002b5c]/80 via-[#002b5c]/45 to-[#002b5c]/85" />
+        </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="flex justify-center mb-5">
-            <div className="kia-float w-20 h-20 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center ring-1 ring-white/30">
-              <Plane className="w-11 h-11" />
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight kia-rise">{t("title")}</h1>
-          <p className="text-xl md:text-2xl text-white/85 mb-10 kia-rise" style={{ animationDelay: "0.1s" }}>
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 text-center text-white flex flex-col items-center">
+          <span className="kia-rise inline-block px-4 py-1.5 rounded-full bg-white/15 backdrop-blur text-xs font-medium tracking-widest uppercase ring-1 ring-white/30 mb-6">
+            General Authority of Civil Aviation
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight kia-rise drop-shadow-lg" style={{ animationDelay: "0.05s" }}>
+            {t("title")}
+          </h1>
+          <p className="text-xl md:text-2xl text-white/85 mb-9 kia-rise drop-shadow" style={{ animationDelay: "0.12s" }}>
             {t("subtitle")}
           </p>
-
-          <form
-            action={`/${locale}/flights`}
-            className="kia-glass flex flex-col sm:flex-row gap-2 p-2 rounded-2xl max-w-2xl mx-auto kia-rise"
-            style={{ animationDelay: "0.2s" }}
-          >
-            <div className="flex items-center flex-1 gap-2 px-4">
-              <Search className="w-5 h-5 text-[#0057a8] shrink-0" />
-              <input
-                name="q"
-                type="text"
-                placeholder={t("searchPlaceholder")}
-                className="flex-1 bg-transparent py-3 text-gray-900 text-sm placeholder:text-gray-500 focus:outline-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="px-7 py-3 bg-gradient-to-r from-[#0057a8] to-[#2e9bd6] text-white font-semibold rounded-xl hover:opacity-90 transition-opacity flex items-center gap-2 justify-center shadow-lg"
-            >
-              {t("searchButton")}
-            </button>
-          </form>
+          <div className="kia-rise w-full flex justify-center" style={{ animationDelay: "0.2s" }}>
+            <FlightWidget locale={locale} />
+          </div>
         </div>
 
-        {/* Curved bottom edge */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201440%2048%22%20preserveAspectRatio=%22none%22%3E%3Cpath%20fill=%22%23f4f8fc%22%20d=%22M0,48L1440,48L1440,16C1080,40%20360,40%200,16Z%22/%3E%3C/svg%3E')] bg-cover" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201440%2048%22%20preserveAspectRatio=%22none%22%3E%3Cpath%20fill=%22%23f4f8fc%22%20d=%22M0,48L1440,48L1440,12C1080,40%20360,40%200,12Z%22/%3E%3C/svg%3E')] bg-cover z-10" />
       </section>
 
-      {/* Quick flight status */}
-      <section className="-mt-6 relative z-20">
-        <div className="max-w-3xl mx-auto px-4 flex flex-wrap gap-3 justify-center">
-          {["arrivals", "departures", "transit"].map((type, i) => (
-            <Link
-              key={type}
-              href={`/${locale}/flights?tab=${type}`}
-              className="kia-glass kia-card-hover flex items-center gap-2 px-6 py-3 rounded-full text-[#002b5c] text-sm font-semibold kia-rise"
-              style={{ animationDelay: `${0.3 + i * 0.05}s` }}
-            >
-              <Clock className="w-4 h-4 text-[#0057a8]" />
-              {t(type as "arrivals" | "departures" | "transit")}
-            </Link>
-          ))}
-        </div>
+      {/* Live tracking banner */}
+      <section className="max-w-7xl mx-auto px-4 -mt-4 relative z-20">
+        <Link
+          href={`/${locale}/live`}
+          className="kia-glass kia-floaty flex items-center gap-4 rounded-2xl p-5 group"
+        >
+          <span className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-red-500 text-white shrink-0">
+            <span className="absolute inset-0 rounded-2xl bg-red-500 kia-pulse-ring" />
+            <Radar className="w-6 h-6 relative" />
+          </span>
+          <div className="flex-1">
+            <p className="font-bold text-[#002b5c] flex items-center gap-2">
+              Live Flight Radar
+              <span className="w-2 h-2 rounded-full bg-red-500 kia-blip" />
+            </p>
+            <p className="text-sm text-gray-600">Track aircraft over Kuwait airspace in real time</p>
+          </div>
+          <ArrowRight className="w-5 h-5 text-[#0057a8] group-hover:translate-x-1 transition-transform" />
+        </Link>
       </section>
 
-      {/* Services grid */}
+      {/* Quick links */}
       <section className="max-w-7xl mx-auto px-4 py-14">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[#002b5c] mb-2">{t("quickLinks")}</h2>
@@ -98,13 +97,42 @@ function HomeContent({ locale }: { locale: string }) {
             <Link
               key={link.key}
               href={`/${locale}${link.href}`}
-              className="kia-glass kia-card-hover flex flex-col items-center gap-3 p-5 rounded-2xl text-center group kia-rise"
+              className="kia-glass kia-floaty flex flex-col items-center gap-3 p-5 rounded-2xl text-center group kia-rise"
               style={{ animationDelay: `${i * 0.03}s` }}
             >
               <div className={`w-14 h-14 ${link.color} rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform`}>
                 {link.icon}
               </div>
               <span className="text-xs font-semibold text-gray-700 leading-tight">{n(link.key)}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Experiences grid (Dubai-style) */}
+      <section className="max-w-7xl mx-auto px-4 pb-14">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-[#002b5c] mb-2">Explore the Airport</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-[#0057a8] to-[#2e9bd6] rounded-full mx-auto" />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {experiences.map((e) => (
+            <Link
+              key={e.key}
+              href={`/${locale}${e.href}`}
+              className="kia-floaty relative overflow-hidden rounded-3xl group h-56 flex flex-col justify-end p-6 text-white shadow-lg"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${e.grad}`} />
+              <div className="absolute inset-0 opacity-20 text-[10rem] flex items-center justify-center group-hover:scale-110 transition-transform">
+                {e.emoji}
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-lg font-bold mb-1">{e.title}</h3>
+                <p className="text-sm text-white/85 mb-3">{e.desc}</p>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold">
+                  Discover <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </div>
             </Link>
           ))}
         </div>
