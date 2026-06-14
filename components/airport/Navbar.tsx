@@ -27,12 +27,14 @@ export default function Navbar({ locale }: { locale: string }) {
   const otherLocale = locale === "en" ? "ar" : "en";
 
   return (
-    <header className="bg-[#003366] text-white shadow-lg sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-[#002b5c] via-[#0057a8] to-[#002b5c] text-white shadow-xl sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-opacity-95">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href={`/${locale}`} className="flex items-center gap-2 font-bold text-lg">
-            <Plane className="w-6 h-6" />
-            <span className="hidden sm:inline">Kuwait International Airport</span>
+          <Link href={`/${locale}`} className="flex items-center gap-2.5 font-bold text-lg group">
+            <span className="w-9 h-9 rounded-xl bg-white/15 ring-1 ring-white/30 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Plane className="w-5 h-5" />
+            </span>
+            <span className="hidden sm:inline tracking-tight">Kuwait International Airport</span>
             <span className="sm:hidden">KIA</span>
           </Link>
 

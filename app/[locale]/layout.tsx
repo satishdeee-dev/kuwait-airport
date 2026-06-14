@@ -22,10 +22,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={isRTL ? "rtl" : "ltr"}>
-      <body className="min-h-screen flex flex-col bg-gray-50">
+      <body className="min-h-screen flex flex-col kia-page-bg">
         <NextIntlClientProvider messages={messages}>
           <Navbar locale={locale} />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 relative z-10">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

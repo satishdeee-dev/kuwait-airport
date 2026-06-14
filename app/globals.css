@@ -128,3 +128,76 @@
     @apply font-sans;
   }
 }
+
+/* ---------- Kuwait Airport brand theme ---------- */
+:root {
+  --kia-navy: #002b5c;
+  --kia-blue: #0057a8;
+  --kia-sky: #2e9bd6;
+  --kia-gold: #c8a24a;
+}
+
+/* Decorative full-page background */
+.kia-page-bg {
+  position: relative;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(46, 155, 214, 0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(0, 87, 168, 0.16), transparent 55%),
+    linear-gradient(180deg, #f4f8fc 0%, #eef4fa 40%, #f7fafd 100%);
+}
+
+/* Subtle dotted texture overlay */
+.kia-dots::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 43, 92, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glassmorphism card */
+.kia-glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 30px rgba(0, 43, 92, 0.08);
+}
+
+/* Hero gradient + aviation backdrop */
+.kia-hero {
+  background:
+    linear-gradient(135deg, rgba(0, 43, 92, 0.92) 0%, rgba(0, 87, 168, 0.88) 55%, rgba(46, 155, 214, 0.85) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.07' stroke-width='1.5'%3E%3Ccircle cx='600' cy='300' r='120'/%3E%3Ccircle cx='600' cy='300' r='220'/%3E%3Ccircle cx='600' cy='300' r='320'/%3E%3Cpath d='M0 450 Q300 380 600 450 T1200 450'/%3E%3Cpath d='M0 520 Q300 460 600 520 T1200 520'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes kia-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.kia-float { animation: kia-float 4s ease-in-out infinite; }
+
+@keyframes kia-fly {
+  0% { transform: translateX(-20px) translateY(6px); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateX(120px) translateY(-30px); opacity: 0; }
+}
+.kia-fly { animation: kia-fly 6s linear infinite; }
+
+@keyframes kia-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.kia-rise { animation: kia-rise 0.6s ease-out both; }
+
+.kia-card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.kia-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 43, 92, 0.14);
+}
