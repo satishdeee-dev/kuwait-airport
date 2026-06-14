@@ -15,7 +15,6 @@ const ITEMS: Item[] = [
   { key: "parking", href: "/parking" },
   { key: "dining", href: "/dining" },
   { key: "lostFound", href: "/lost-found" },
-  { key: "prayer", href: "/prayer" },
   { key: "weather", href: "/weather" },
   { key: "visa", href: "/visa" },
   { key: "complaints", href: "/complaints" },

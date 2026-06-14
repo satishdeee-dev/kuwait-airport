@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MapPin, Phone, Clock, ArrowRight, Radar } from "lucide-react";
 import FlightWidget from "@/components/airport/FlightWidget";
 import QuickLinksCarousel from "@/components/airport/QuickLinksCarousel";
+import PrayerTimesWidget from "@/components/airport/PrayerTimesWidget";
 
 function HomeContent({ locale }: { locale: string }) {
   const t = useTranslations("home");
@@ -78,13 +79,14 @@ function HomeContent({ locale }: { locale: string }) {
         <QuickLinksCarousel locale={locale} />
       </section>
 
-      {/* Experiences grid (Dubai-style) */}
+      {/* Experiences grid (Dubai-style) with prayer times on the side */}
       <section className="max-w-7xl mx-auto px-4 pb-14">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[#002b5c] mb-2">Explore the Airport</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#0057a8] to-[#2e9bd6] rounded-full mx-auto" />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-5">
           {experiences.map((e) => (
             <Link
               key={e.key}
@@ -104,6 +106,8 @@ function HomeContent({ locale }: { locale: string }) {
               </div>
             </Link>
           ))}
+          </div>
+          <PrayerTimesWidget locale={locale} />
         </div>
       </section>
 
