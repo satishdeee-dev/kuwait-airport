@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Clock, ArrowRight, Car, SquareParking } from "lucide-react";
+import { MapPin, Phone, Clock, ArrowRight, Radar } from "lucide-react";
 import FlightWidget from "@/components/airport/FlightWidget";
 import QuickLinksCarousel from "@/components/airport/QuickLinksCarousel";
 import PrayerTimesWidget from "@/components/airport/PrayerTimesWidget";
@@ -32,6 +32,14 @@ function HomeContent({ locale }: { locale: string }) {
         </div>
 
         <div className="relative z-10 w-full max-w-4xl mx-auto px-4 text-center text-white flex flex-col items-center">
+          <Image
+            src="/brand/logo-white.png"
+            alt="Kuwait International Airport"
+            width={320}
+            height={80}
+            priority
+            className="kia-rise h-14 md:h-20 w-auto mb-6 drop-shadow-lg"
+          />
           <span className="kia-rise inline-block px-4 py-1.5 rounded-full bg-white/15 backdrop-blur text-xs font-medium tracking-widest uppercase ring-1 ring-white/30 mb-6">
             General Authority of Civil Aviation
           </span>
@@ -49,34 +57,24 @@ function HomeContent({ locale }: { locale: string }) {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201440%2048%22%20preserveAspectRatio=%22none%22%3E%3Cpath%20fill=%22%23f4f8fc%22%20d=%22M0,48L1440,48L1440,12C1080,40%20360,40%200,12Z%22/%3E%3C/svg%3E')] bg-cover z-10" />
       </section>
 
-      {/* Booking banners: Car Rental + Parking */}
-      <section className="max-w-7xl mx-auto px-4 -mt-6 relative z-20 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Live tracking banner */}
+      <section className="max-w-7xl mx-auto px-4 -mt-6 relative z-20">
         <Link
-          href={`/${locale}/car-rental`}
+          href={`/${locale}/live`}
           className="kia-glass kia-floaty flex items-center gap-4 rounded-2xl p-5 group"
         >
-          <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 text-white shrink-0">
-            <Car className="w-6 h-6" />
+          <span className="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-red-500 text-white shrink-0">
+            <span className="absolute inset-0 rounded-2xl bg-red-500 kia-pulse-ring" />
+            <Radar className="w-6 h-6 relative" />
           </span>
           <div className="flex-1">
-            <p className="font-bold text-white">Rent a Car</p>
-            <p className="text-sm text-slate-300">Browse models &amp; book online</p>
+            <p className="font-bold text-white flex items-center gap-2">
+              Live Flight Radar
+              <span className="w-2 h-2 rounded-full bg-red-500 kia-blip" />
+            </p>
+            <p className="text-sm text-slate-300">Track aircraft over Kuwait airspace in real time</p>
           </div>
           <ArrowRight className="w-5 h-5 text-sky-400 group-hover:translate-x-1 transition-transform rtl:rotate-180" />
-        </Link>
-
-        <Link
-          href={`/${locale}/parking`}
-          className="kia-glass kia-floaty flex items-center gap-4 rounded-2xl p-5 group"
-        >
-          <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shrink-0">
-            <SquareParking className="w-6 h-6" />
-          </span>
-          <div className="flex-1">
-            <p className="font-bold text-white">Reserve Parking</p>
-            <p className="text-sm text-slate-300">Pick a slot on the live map</p>
-          </div>
-          <ArrowRight className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform rtl:rotate-180" />
         </Link>
       </section>
 
