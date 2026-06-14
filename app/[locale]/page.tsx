@@ -3,27 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Clock, ArrowRight, Radar } from "lucide-react";
 import FlightWidget from "@/components/airport/FlightWidget";
+import QuickLinksCarousel from "@/components/airport/QuickLinksCarousel";
 
 function HomeContent({ locale }: { locale: string }) {
   const t = useTranslations("home");
-  const n = useTranslations("nav");
-
-  const quickLinks = [
-    { key: "flights", href: "/flights", icon: "✈️", color: "bg-blue-600" },
-    { key: "passenger", href: "/passenger", icon: "👤", color: "bg-green-600" },
-    { key: "services", href: "/services", icon: "🏢", color: "bg-purple-600" },
-    { key: "transport", href: "/transport", icon: "🚌", color: "bg-orange-600" },
-    { key: "parking", href: "/parking", icon: "🚗", color: "bg-red-600" },
-    { key: "dining", href: "/dining", icon: "🍽️", color: "bg-yellow-600" },
-    { key: "lostFound", href: "/lost-found", icon: "🔍", color: "bg-teal-600" },
-    { key: "prayer", href: "/prayer", icon: "🕌", color: "bg-emerald-600" },
-    { key: "weather", href: "/weather", icon: "☀️", color: "bg-sky-600" },
-    { key: "visa", href: "/visa", icon: "📋", color: "bg-indigo-600" },
-    { key: "complaints", href: "/complaints", icon: "💬", color: "bg-pink-600" },
-    { key: "media", href: "/media", icon: "📰", color: "bg-gray-600" },
-    { key: "vip", href: "/vip", icon: "⭐", color: "bg-amber-600" },
-    { key: "guidance", href: "/guidance", icon: "🗺️", color: "bg-cyan-600" },
-  ] as const;
 
   const experiences = [
     { key: "dining", href: "/dining", title: "Dining & Shopping", desc: "Restaurants, cafés and duty-free", emoji: "🛍️", grad: "from-amber-500 to-orange-600" },
@@ -86,27 +69,13 @@ function HomeContent({ locale }: { locale: string }) {
         </Link>
       </section>
 
-      {/* Quick links */}
+      {/* Quick links — rolling photo carousel */}
       <section className="max-w-7xl mx-auto px-4 py-14">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-[#002b5c] mb-2">{t("quickLinks")}</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#0057a8] to-[#2e9bd6] rounded-full mx-auto" />
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
-          {quickLinks.map((link, i) => (
-            <Link
-              key={link.key}
-              href={`/${locale}${link.href}`}
-              className="kia-glass kia-floaty flex flex-col items-center gap-3 p-5 rounded-2xl text-center group kia-rise"
-              style={{ animationDelay: `${i * 0.03}s` }}
-            >
-              <div className={`w-14 h-14 ${link.color} rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform`}>
-                {link.icon}
-              </div>
-              <span className="text-xs font-semibold text-gray-700 leading-tight">{n(link.key)}</span>
-            </Link>
-          ))}
-        </div>
+        <QuickLinksCarousel locale={locale} />
       </section>
 
       {/* Experiences grid (Dubai-style) */}

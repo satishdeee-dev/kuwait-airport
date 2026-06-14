@@ -228,3 +228,22 @@
   50% { opacity: 0.4; }
 }
 .kia-blip { animation: kia-blip 1.5s ease-in-out infinite; }
+
+/* Rolling quick-links carousel */
+@keyframes kia-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.kia-marquee {
+  animation: kia-marquee 45s linear infinite;
+  scrollbar-width: none;
+}
+.kia-marquee::-webkit-scrollbar { display: none; }
+.kia-marquee:hover { animation-play-state: paused; }
+.kia-marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .kia-marquee { animation: none; }
+}
